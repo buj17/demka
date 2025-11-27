@@ -9,6 +9,7 @@ pyside6==6.9.0
 pyside6-addons==6.9.0
 pyside6-essentials==6.9.0
 python-dateutil==2.9.0.post0
+python-dotenv==1.2.1
 pytz==2025.2
 shiboken6==6.9.0
 six==1.17.0
