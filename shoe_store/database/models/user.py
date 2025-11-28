@@ -9,6 +9,7 @@ class UserRoleEnum(enum.Enum):
     ADMINISTRATOR = 'admin'
     AUTHORIZED_CLIENT = 'client'
     MANAGER = 'manager'
+    EMPTY_ROLE = 'empty'
 
 
 class User(Base):
@@ -18,8 +19,10 @@ class User(Base):
         primary_key=True,
         autoincrement=True,
     )
-    role = sqlalchemy.Column(
+    user_role = sqlalchemy.Column(
         sqlalchemy.Enum(UserRoleEnum),
+        nullable=False,
+        default=UserRoleEnum.EMPTY_ROLE
     )
     last_name = sqlalchemy.Column(
         sqlalchemy.String(256),
