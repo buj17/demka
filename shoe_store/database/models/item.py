@@ -75,7 +75,7 @@ class Item(Base):
     @sqlalchemy.orm.validates('current_discount')
     def validate_discount(self, key, value):
         if not 0 <= value <= 100:
-            raise ValueError('discount must be in range [0; 100]')
+            raise ValueError('Discount must be in range [0; 100]')
 
         return value
 
