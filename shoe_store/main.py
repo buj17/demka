@@ -1,10 +1,11 @@
-import sqlalchemy
+import sys
 
-from database.connect import create_session
+from PySide6.QtWidgets import QApplication
 
-session = create_session()
-print(
-    session.execute(
-        sqlalchemy.text('SELECT version();'),
-    ).fetchall(),
-)
+from gui.windows.main_window import MainWindow
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.show()
+    app.exec()
