@@ -62,6 +62,11 @@ class Item(Base):
         default=_DEFAULT_IMAGE_FILENAME,
     )
 
+    ordered_items = sqlalchemy.orm.relationship(
+        'OrderedItem',
+        back_populates='item'
+    )
+
     @sqlalchemy.orm.validates('price')
     def validate_price(self, key, value):
         if value < 0:

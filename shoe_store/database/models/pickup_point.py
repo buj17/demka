@@ -1,4 +1,4 @@
-import sqlalchemy
+import sqlalchemy.orm
 
 from database.models import Base
 
@@ -12,4 +12,8 @@ class PickupPoint(Base):
     )
     address = sqlalchemy.Column(
         sqlalchemy.String(256),
+    )
+    orders = sqlalchemy.orm.relationship(
+        'Order',
+        back_populates='pickup_point',
     )
