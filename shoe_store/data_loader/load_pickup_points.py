@@ -25,6 +25,8 @@ def parse_pickup_points(
     return pickup_points
 
 def create_pickup_point(address: str) -> database.models.PickupPoint:
+    # Replace nbsp char to common space
+    address = address.replace(chr(160), ' ')
     return database.models.PickupPoint(
         address=address,
     )

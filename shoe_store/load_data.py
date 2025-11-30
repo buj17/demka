@@ -1,8 +1,7 @@
 import sqlalchemy
 
 import config.settings
-import data_loader.load_users
-import data_loader.load_pickup_points
+import data_loader
 import database.models
 
 _USER_XLSX_FILE = (
@@ -10,6 +9,9 @@ _USER_XLSX_FILE = (
 )
 _PICKUP_POINT_XLSX_FILE = (
     config.settings.BASE_DIR / 'import_data' / 'pickup_point_import.xlsx'
+)
+_ITEM_XLSX_FILE = (
+    config.settings.BASE_DIR / 'import_data' / 'item_import.xlsx'
 )
 
 if __name__ == '__main__':
@@ -26,14 +28,22 @@ if __name__ == '__main__':
                     sqlalchemy.text(truncate_statement)
                 )
 
-    users = data_loader.load_users.parse_users(_USER_XLSX_FILE)
+    users = data_loader.parse_users(
+        _USER_XLSX_FILE,
+    )
     session.add_all(users)
     session.flush()
 
-    pickup_points = data_loader.load_pickup_points.parse_pickup_points(
+    pickup_points = data_loader.parse_pickup_points(
         _PICKUP_POINT_XLSX_FILE,
     )
     session.add_all(pickup_points)
+    session.flush()
+
+    items = data_loader.parse_items(
+        _ITEM_XLSX_FILE,
+    )
+    session.add_all(items)
     session.flush()
 
     session.commit()
