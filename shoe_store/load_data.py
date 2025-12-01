@@ -1,3 +1,5 @@
+import os
+import shutil
 from typing import Sequence
 
 import sqlalchemy
@@ -38,6 +40,12 @@ def prepare_item_dict(
     return res
 
 if __name__ == '__main__':
+    os.makedirs(config.settings.BASE_DIR / 'media/', exist_ok=True)
+    shutil.copy(
+        config.settings.BASE_DIR / 'import_data' / 'picture.png',
+        config.settings.BASE_DIR / 'media',
+    )
+
     session = database.create_session()
 
     # Truncate all existing data
