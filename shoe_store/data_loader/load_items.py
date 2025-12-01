@@ -8,7 +8,7 @@ import database.models
 
 def parse_items(
     source_xlsx_file: str | pathlib.Path
-) -> Sequence[database.models.PickupPoint]:
+) -> Sequence[database.models.Item]:
     workbook = openpyxl.load_workbook(source_xlsx_file)
     sheet = workbook.active
 

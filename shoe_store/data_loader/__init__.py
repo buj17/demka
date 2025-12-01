@@ -1,6 +1,9 @@
 from .load_items import (
     parse_items,
 )
+from .load_orders import (
+    parse_orders,
+)
 from .load_pickup_points import (
     parse_pickup_points,
 )
