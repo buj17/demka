@@ -1,6 +1,6 @@
 import enum
 
-import sqlalchemy
+import sqlalchemy.orm
 
 from database.models.base import Base
 
@@ -49,4 +49,9 @@ class User(Base):
         sqlalchemy.String(256),
         nullable=False,
         default='',
+    )
+
+    orders = sqlalchemy.orm.relationship(
+        'Order',
+        back_populates='user',
     )
