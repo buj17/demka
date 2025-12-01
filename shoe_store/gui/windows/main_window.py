@@ -2,6 +2,7 @@ from PySide6.QtWidgets import QMainWindow
 
 import gui.ui.main_window_ui
 from gui.widgets import LoginWidget
+from gui.widgets.item_list_client_widget import ItemListClientWidget
 
 
 class MainWindow(QMainWindow):
@@ -11,8 +12,12 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         self.clear_all_widgets()
 
-        self.login_widget = LoginWidget()
-        self.ui.stackedWidget.addWidget(self.login_widget)
+        self.login_widget = LoginWidget(self)
+        self.login_widget.setVisible(False)
+
+        self.item_list_client_widget = ItemListClientWidget(self)
+
+        self.ui.stackedWidget.addWidget(self.item_list_client_widget)
 
     def clear_all_widgets(self):
         for _ in range(self.ui.stackedWidget.count()):

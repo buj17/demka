@@ -49,6 +49,5 @@ class Order(Base):
     )
     ordered_items = sqlalchemy.orm.relationship(
         'OrderedItem',
-        back_populates='order'
+        back_populates='order',
     )
-

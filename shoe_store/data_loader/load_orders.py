@@ -56,10 +56,10 @@ def parse_orders(
         items_article_numbers_iter = iter(items_article_numbers.split(', '))
         for article_number, item_count in zip(
             items_article_numbers_iter,
-            items_article_numbers_iter
+            items_article_numbers_iter,
         ):
             ordered_item = database.models.OrderedItem(
-                item_count=int(item_count)
+                item_count=int(item_count),
             )
             session.add(ordered_item)
             session.flush()
@@ -80,7 +80,6 @@ def create_order(
         get_code=get_code,
         order_status=order_status,
     )
-
 
 
 if __name__ == '__main__':

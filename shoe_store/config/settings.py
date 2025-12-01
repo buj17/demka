@@ -14,6 +14,6 @@ DB_PASS = os.getenv('DB_PASS', 'password')
 DB_NAME = os.getenv('DB_NAME', 'shoe_store')
 
 DATABASE_URL = (
-        f'postgresql+psycopg://'
-        f'{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}'
-    )
+    f'postgresql+psycopg://'
+    f'{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}'
+)

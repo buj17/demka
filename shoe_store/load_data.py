@@ -1,7 +1,10 @@
 import os
-import shutil
+import sys
 from typing import Sequence
 
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QPixmap
+from PySide6.QtWidgets import QApplication
 import sqlalchemy
 
 import config.settings
@@ -23,7 +26,7 @@ _ORDER_XLSX_FILE = (
 
 
 def prepare_user_dict(
-    users: Sequence[database.models.User]
+    users: Sequence[database.models.User],
 ) -> dict[str, database.models.User]:
     res = {}
     for user in users:
@@ -31,19 +34,31 @@ def prepare_user_dict(
         res[full_name] = user
     return res
 
+
 def prepare_item_dict(
-    items: Sequence[database.models.Item]
+    items: Sequence[database.models.Item],
 ) -> dict[str, database.models.Item]:
     res = {}
     for item in items:
         res[item.article_number] = item
     return res
 
+
 if __name__ == '__main__':
+    app = QApplication(sys.argv)
+
     os.makedirs(config.settings.BASE_DIR / 'media/', exist_ok=True)
-    shutil.copy(
+    image = QPixmap(
         config.settings.BASE_DIR / 'import_data' / 'picture.png',
-        config.settings.BASE_DIR / 'media',
+    )
+    scaled = image.scaled(
+        200,
+        150,
+        Qt.AspectRatioMode.IgnoreAspectRatio,
+        Qt.TransformationMode.SmoothTransformation,
+    )
+    scaled.save(
+        str(config.settings.BASE_DIR / 'media' / 'picture.png'),
     )
 
     session = database.create_session()
@@ -56,7 +71,7 @@ if __name__ == '__main__':
                     f'TRUNCATE TABLE {table.name} RESTART IDENTITY CASCADE;'
                 )
                 connection.execute(
-                    sqlalchemy.text(truncate_statement)
+                    sqlalchemy.text(truncate_statement),
                 )
 
     users = data_loader.parse_users(
@@ -78,6 +93,13 @@ if __name__ == '__main__':
     )
     session.add_all(items)
     session.flush()
+    for item in items:
+        if item.image_filename != 'picture.png':
+            image_path = (
+                config.settings.BASE_DIR / 'import_data' / item.image_filename
+            )
+            item.set_image(image_path)
+
     print('Loaded items to database')
 
     data_loader.parse_orders(
