@@ -4,6 +4,8 @@
 - Python3 (желательно 3.13)
 - PostgreSQL сервер
 
+## Необходимые действия для запуска проекта на ОС Windows в Powershell
+
 ### Склонировать репозиторий
 ```powershell
 git clone https://github.com/buj17/demka
