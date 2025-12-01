@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>Form</class>
+    <widget class="QWidget" name="Form">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>736</width>
+                <height>677</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>Form</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_2">
+            <item row="0" column="0">
+                <layout class="QVBoxLayout" name="verticalLayout">
+                    <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_2">
+                            <item>
+                                <widget class="QPushButton"
+                                        name="logout_button">
+                                    <property name="text">
+                                        <string>Выход</string>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QLabel" name="full_name_label">
+                                    <property name="text">
+                                        <string>Фамилия Имя Отчество</string>
+                                    </property>
+                                    <property name="alignment">
+                                        <set>
+                                            Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing
+                                        </set>
+                                    </property>
+                                </widget>
+                            </item>
+                        </layout>
+                    </item>
+                    <item>
+                        <widget class="QScrollArea" name="items_scroll_area">
+                            <property name="widgetResizable">
+                                <bool>true</bool>
+                            </property>
+                            <widget class="QWidget"
+                                    name="scrollAreaWidgetContents_2">
+                                <property name="enabled">
+                                    <bool>true</bool>
+                                </property>
+                                <property name="geometry">
+                                    <rect>
+                                        <x>0</x>
+                                        <y>0</y>
+                                        <width>710</width>
+                                        <height>614</height>
+                                    </rect>
+                                </property>
+                                <layout class="QVBoxLayout"
+                                        name="verticalLayout_4">
+                                    <item>
+                                        <layout class="QVBoxLayout"
+                                                name="item_cards_layout"/>
+                                    </item>
+                                </layout>
+                            </widget>
+                        </widget>
+                    </item>
+                </layout>
+            </item>
+        </layout>
+    </widget>
+    <resources/>
+    <connections/>
+</ui>

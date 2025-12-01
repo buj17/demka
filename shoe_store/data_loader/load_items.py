@@ -7,8 +7,9 @@ import openpyxl
 import config.settings
 import database.models
 
+
 def parse_items(
-    source_xlsx_file: str | pathlib.Path
+    source_xlsx_file: str | pathlib.Path,
 ) -> Sequence[database.models.Item]:
     workbook = openpyxl.load_workbook(source_xlsx_file)
     sheet = workbook.active
@@ -23,8 +24,6 @@ def parse_items(
             break
 
         values = list(map(lambda cell: cell.value, row))
-        # Remove unused attribute
-        values.pop(2)
 
         item = create_item(*values)
         items.append(item)
@@ -35,6 +34,7 @@ def parse_items(
 def create_item(
     article_number: str,
     name: str,
+    measure: str,
     price: int,
     supplier: str,
     producer: str,
@@ -56,6 +56,7 @@ def create_item(
         'category': category,
         'current_discount': current_discount,
         'stock_quantity': stock_quantity,
+        'measure': measure,
         'description': description,
     }
     if image_filename is not None:
@@ -70,5 +71,5 @@ def create_item(
 
 if __name__ == '__main__':
     parse_items(
-        config.settings.BASE_DIR / 'import_data' / 'item_import.xlsx'
+        config.settings.BASE_DIR / 'import_data' / 'item_import.xlsx',
     )

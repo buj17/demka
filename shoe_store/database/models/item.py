@@ -1,8 +1,16 @@
+import os
+import pathlib
+
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QPixmap
 import sqlalchemy.orm
 
+import config.settings
 from database.models.base import Base
 
 _DEFAULT_IMAGE_FILENAME = 'picture.png'
+_IMAGE_WIDTH = 200
+_IMAGE_HEIGHT = 150
 
 
 class Item(Base):
@@ -46,6 +54,11 @@ class Item(Base):
         nullable=False,
         default=0,
     )
+    measure = sqlalchemy.Column(
+        sqlalchemy.String(256),
+        nullable=False,
+        default='',
+    )
     stock_quantity = sqlalchemy.Column(
         sqlalchemy.Integer,
         nullable=False,
@@ -64,7 +77,7 @@ class Item(Base):
 
     ordered_items = sqlalchemy.orm.relationship(
         'OrderedItem',
-        back_populates='item'
+        back_populates='item',
     )
 
     @sqlalchemy.orm.validates('price')
@@ -90,3 +103,37 @@ class Item(Base):
             raise ValueError('Quantity cannot be negative')
 
         return value
+
+    def get_image(self, width: int, height: int) -> QPixmap:
+        image = QPixmap(
+            config.settings.BASE_DIR / 'media' / self.image_filename,
+        )
+
+        return image.scaled(
+            _IMAGE_WIDTH,
+            _IMAGE_HEIGHT,
+            Qt.AspectRatioMode.IgnoreAspectRatio,
+            Qt.TransformationMode.SmoothTransformation,
+        )
+
+    def set_image(self, image_path: str | pathlib.Path):
+        previous_file = self.image_filename
+
+        self.image_filename = f'{self.id}.jpg'
+
+        image = QPixmap(image_path)
+        scaled_image = image.scaled(
+            _IMAGE_WIDTH,
+            _IMAGE_HEIGHT,
+            Qt.AspectRatioMode.IgnoreAspectRatio,
+            Qt.TransformationMode.SmoothTransformation,
+        )
+        scaled_image.save(
+            str(config.settings.BASE_DIR / 'media' / self.image_filename),
+        )
+
+        if (previous_file != _DEFAULT_IMAGE_FILENAME
+            and previous_file != self.image_filename):
+            os.remove(
+                config.settings.BASE_DIR / 'media' / previous_file,
+            )

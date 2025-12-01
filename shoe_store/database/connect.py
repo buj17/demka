@@ -8,7 +8,7 @@ engine = sqlalchemy.create_engine(settings.DATABASE_URL)
 SessionLocal = sqlalchemy.orm.sessionmaker(
     autocommit=False,
     autoflush=False,
-    bind=engine
+    bind=engine,
 )
 
 

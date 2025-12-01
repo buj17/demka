@@ -22,7 +22,7 @@ class User(Base):
     user_role = sqlalchemy.Column(
         sqlalchemy.Enum(UserRoleEnum),
         nullable=False,
-        default=UserRoleEnum.EMPTY_ROLE
+        default=UserRoleEnum.EMPTY_ROLE,
     )
     last_name = sqlalchemy.Column(
         sqlalchemy.String(256),
