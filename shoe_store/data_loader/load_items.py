@@ -1,4 +1,5 @@
 import pathlib
+import shutil
 from typing import Sequence
 
 import openpyxl
@@ -58,6 +59,10 @@ def create_item(
         'description': description,
     }
     if image_filename is not None:
+        shutil.copy(
+            config.settings.BASE_DIR / 'import_data' / image_filename,
+            config.settings.BASE_DIR / 'media',
+        )
         kwargs['image_filename'] = image_filename
 
     return database.models.Item(**kwargs)
