@@ -9,6 +9,8 @@ from gui.widgets.item_card_widget import ItemCardWidget
 import gui.windows.main_window
 
 _ALL_SUPPLIERS = 'Все поставщики'
+_ORDER_ASC = 'По возрастанию'
+_ORDER_DESC = 'По убыванию'
 
 
 class ItemListManagerWidget(QWidget):
@@ -29,6 +31,9 @@ class ItemListManagerWidget(QWidget):
             self.refresh_items,
         )
         self.ui.search_items_line_edit.textChanged.connect(
+            self.refresh_items,
+        )
+        self.ui.sort_by_stock_quantity_combo_box.currentIndexChanged.connect(
             self.refresh_items,
         )
 
@@ -53,9 +58,10 @@ class ItemListManagerWidget(QWidget):
 
         search_text = self.ui.search_items_line_edit.text()
         supplier = self.ui.search_suppliers_combo_box.currentText()
+        sort_param = self.ui.sort_by_stock_quantity_combo_box.currentText()
 
         with database.create_session() as session:
-            query = session.query(Item)
+            query: Query[Item | type[Item]] = session.query(Item)
             if search_text:
                 query = query.filter(
                     sqlalchemy.or_(
@@ -69,9 +75,14 @@ class ItemListManagerWidget(QWidget):
                 )
 
             if supplier != _ALL_SUPPLIERS:
-                query: Query[Item | type[Item]] = query.filter(
+                query = query.filter(
                     Item.supplier.ilike(supplier),
                 )
+
+            if sort_param == _ORDER_ASC:
+                query = query.order_by(Item.stock_quantity)
+            elif sort_param == _ORDER_DESC:
+                query = query.order_by(sqlalchemy.desc(Item.stock_quantity))
 
             self.items.extend(query.all())
 

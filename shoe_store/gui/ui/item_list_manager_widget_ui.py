@@ -9,7 +9,7 @@
 ################################################################################
 
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect,
-                            Qt, )
+                            )
 from PySide6.QtWidgets import (QComboBox, QGridLayout,
                                QHBoxLayout,
                                QLabel, QLineEdit, QPushButton, QScrollArea,
@@ -34,8 +34,6 @@ class Ui_Form(object):
 
         self.full_name_label = QLabel(Form)
         self.full_name_label.setObjectName(u"full_name_label")
-        self.full_name_label.setAlignment(
-            Qt.AlignRight | Qt.AlignTop | Qt.AlignTrailing)
 
         self.horizontalLayout_2.addWidget(self.full_name_label)
 
@@ -65,6 +63,27 @@ class Ui_Form(object):
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_3)
 
+        self.horizontalLayout_8 = QHBoxLayout()
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.label_3 = QLabel(Form)
+        self.label_3.setObjectName(u"label_3")
+
+        self.horizontalLayout_8.addWidget(self.label_3)
+
+        self.sort_by_stock_quantity_combo_box = QComboBox(Form)
+        self.sort_by_stock_quantity_combo_box.addItem("")
+        self.sort_by_stock_quantity_combo_box.addItem("")
+        self.sort_by_stock_quantity_combo_box.setObjectName(
+            u"sort_by_stock_quantity_combo_box")
+        sizePolicy.setHeightForWidth(
+            self.sort_by_stock_quantity_combo_box.sizePolicy().hasHeightForWidth())
+        self.sort_by_stock_quantity_combo_box.setSizePolicy(sizePolicy)
+
+        self.horizontalLayout_8.addWidget(
+            self.sort_by_stock_quantity_combo_box)
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout_8)
+
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.label = QLabel(Form)
@@ -88,7 +107,7 @@ class Ui_Form(object):
         self.scrollAreaWidgetContents_2.setObjectName(
             u"scrollAreaWidgetContents_2")
         self.scrollAreaWidgetContents_2.setEnabled(True)
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 784, 587))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 784, 556))
         self.verticalLayout_4 = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.item_cards_layout = QVBoxLayout()
@@ -119,6 +138,20 @@ class Ui_Form(object):
         self.label_2.setText(QCoreApplication.translate("Form",
                                                         u"\u041f\u043e\u0441\u0442\u0430\u0432\u0449\u0438\u043a:",
                                                         None))
+        self.label_3.setText(QCoreApplication.translate("Form",
+                                                        u"\u0421\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u043a\u0430 \u043f\u043e \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u0443 \u043d\u0430 \u0441\u043a\u043b\u0430\u0434\u0435: ",
+                                                        None))
+        self.sort_by_stock_quantity_combo_box.setItemText(0,
+                                                          QCoreApplication.translate(
+                                                              "Form",
+                                                              u"\u041f\u043e \u0432\u043e\u0437\u0440\u0430\u0441\u0442\u0430\u043d\u0438\u044e",
+                                                              None))
+        self.sort_by_stock_quantity_combo_box.setItemText(1,
+                                                          QCoreApplication.translate(
+                                                              "Form",
+                                                              u"\u041f\u043e \u0443\u0431\u044b\u0432\u0430\u043d\u0438\u044e",
+                                                              None))
+
         self.label.setText(QCoreApplication.translate("Form",
                                                       u"\u0418\u0441\u043a\u0430\u0442\u044c:",
                                                       None))
