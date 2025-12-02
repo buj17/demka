@@ -2,7 +2,7 @@ from PySide6.QtWidgets import QMainWindow
 
 import gui.ui.main_window_ui
 from gui.widgets import LoginWidget
-from gui.widgets.item_list_client_widget import ItemListClientWidget
+from gui.widgets.item_list_manager_widget import ItemListManagerWidget
 
 
 class MainWindow(QMainWindow):
@@ -15,7 +15,7 @@ class MainWindow(QMainWindow):
         self.login_widget = LoginWidget(self)
         self.login_widget.setVisible(False)
 
-        self.item_list_client_widget = ItemListClientWidget(self)
+        self.item_list_client_widget = ItemListManagerWidget(self)
 
         self.ui.stackedWidget.addWidget(self.item_list_client_widget)
 

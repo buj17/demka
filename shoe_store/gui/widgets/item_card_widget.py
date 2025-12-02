@@ -55,7 +55,7 @@ class ItemCardWidget(QWidget):
                 f'{self.item.price}'
                 f'</s>'
                 f'</span> '
-                f'{self.item.get_reduced_price()}'
+                f'{self.item.get_reduced_price()}',
             )
 
         if item.current_discount > 15:
@@ -67,5 +67,5 @@ class ItemCardWidget(QWidget):
             self.ui.item_stock_quantity_label.setText(
                 '<span style="color: blue;">'
                 f'Количество на складе: {self.item.stock_quantity}'
-                '</span>'
+                '</span>',
             )

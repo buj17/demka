@@ -97,7 +97,9 @@ class Ui_Form(object):
         self.item_image_label.setText("")
         self.item_category_name_label.setText(
             QCoreApplication.translate("Form",
-                                       u"\u041a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f \u0442\u043e\u0432\u0430\u0440\u0430 | \u041d\u0430\u0438\u043c\u0435\u043d\u043e\u0432\u0430\u043d\u0438\u0435 \u0442\u043e\u0432\u0430\u0440\u0430",
+                                       u"\u041a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f \u0442\u043e\u0432\u0430\u0440\u0430 | \u041d\u0430\u0438\u043c\u0435\u043d\u043e\u0432\u0430\u043d\u0438\u0435\n"
+                                       "                                            \u0442\u043e\u0432\u0430\u0440\u0430\n"
+                                       "                                        ",
                                        None))
         self.item_description_label.setText(QCoreApplication.translate("Form",
                                                                        u"\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0442\u043e\u0432\u0430\u0440\u0430",

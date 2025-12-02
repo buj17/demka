@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'item_list_client_widget.ui'
+## Form generated from reading UI file 'item_list_manager_widget.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.9.0
 ##
@@ -9,17 +9,18 @@
 ################################################################################
 
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect,
-                            )
-from PySide6.QtWidgets import (QGridLayout, QHBoxLayout, QLabel,
-                               QPushButton, QScrollArea, QVBoxLayout,
-                               QWidget, )
+                            Qt, )
+from PySide6.QtWidgets import (QComboBox, QGridLayout,
+                               QHBoxLayout,
+                               QLabel, QLineEdit, QPushButton, QScrollArea,
+                               QSizePolicy, QVBoxLayout, QWidget, )
 
 
 class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(736, 677)
+        Form.resize(810, 714)
         self.gridLayout_2 = QGridLayout(Form)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.verticalLayout = QVBoxLayout()
@@ -33,10 +34,52 @@ class Ui_Form(object):
 
         self.full_name_label = QLabel(Form)
         self.full_name_label.setObjectName(u"full_name_label")
+        self.full_name_label.setAlignment(
+            Qt.AlignRight | Qt.AlignTop | Qt.AlignTrailing)
 
         self.horizontalLayout_2.addWidget(self.full_name_label)
 
         self.verticalLayout.addLayout(self.horizontalLayout_2)
+
+        self.verticalLayout_2 = QVBoxLayout()
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.horizontalLayout_3 = QHBoxLayout()
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.label_2 = QLabel(Form)
+        self.label_2.setObjectName(u"label_2")
+
+        self.horizontalLayout_3.addWidget(self.label_2)
+
+        self.search_suppliers_combo_box = QComboBox(Form)
+        self.search_suppliers_combo_box.setObjectName(
+            u"search_suppliers_combo_box")
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Expanding,
+                                 QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(
+            self.search_suppliers_combo_box.sizePolicy().hasHeightForWidth())
+        self.search_suppliers_combo_box.setSizePolicy(sizePolicy)
+
+        self.horizontalLayout_3.addWidget(self.search_suppliers_combo_box)
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout_3)
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.label = QLabel(Form)
+        self.label.setObjectName(u"label")
+
+        self.horizontalLayout.addWidget(self.label)
+
+        self.search_items_line_edit = QLineEdit(Form)
+        self.search_items_line_edit.setObjectName(u"search_items_line_edit")
+
+        self.horizontalLayout.addWidget(self.search_items_line_edit)
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout)
+
+        self.verticalLayout.addLayout(self.verticalLayout_2)
 
         self.items_scroll_area = QScrollArea(Form)
         self.items_scroll_area.setObjectName(u"items_scroll_area")
@@ -45,7 +88,7 @@ class Ui_Form(object):
         self.scrollAreaWidgetContents_2.setObjectName(
             u"scrollAreaWidgetContents_2")
         self.scrollAreaWidgetContents_2.setEnabled(True)
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 710, 614))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 784, 587))
         self.verticalLayout_4 = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.item_cards_layout = QVBoxLayout()
@@ -73,4 +116,10 @@ class Ui_Form(object):
         self.full_name_label.setText(QCoreApplication.translate("Form",
                                                                 u"\u0424\u0430\u043c\u0438\u043b\u0438\u044f \u0418\u043c\u044f \u041e\u0442\u0447\u0435\u0441\u0442\u0432\u043e",
                                                                 None))
+        self.label_2.setText(QCoreApplication.translate("Form",
+                                                        u"\u041f\u043e\u0441\u0442\u0430\u0432\u0449\u0438\u043a:",
+                                                        None))
+        self.label.setText(QCoreApplication.translate("Form",
+                                                      u"\u0418\u0441\u043a\u0430\u0442\u044c:",
+                                                      None))
     # retranslateUi
