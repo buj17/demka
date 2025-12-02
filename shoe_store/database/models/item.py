@@ -137,3 +137,9 @@ class Item(Base):
             os.remove(
                 config.settings.BASE_DIR / 'media' / previous_file,
             )
+
+    def get_reduced_price(self):
+        return round(
+            self.price - self.current_discount * self.price / 100,
+            2,
+        )
