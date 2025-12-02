@@ -41,13 +41,31 @@ class ItemCardWidget(QWidget):
             f'Единица измерения: {self.item.measure}',
         )
         self.ui.item_stock_quantity_label.setText(
-            f'Количество на складе {self.item.stock_quantity}',
+            f'Количество на складе: {self.item.stock_quantity}',
         )
         self.ui.item_current_discount_label.setText(
             f'Скидка: {self.item.current_discount}%',
         )
 
+        if item.current_discount > 0:
+            self.ui.item_price_label.setText(
+                f'Цена: '
+                f'<span style="color: red;">'
+                f'<s>'
+                f'{self.item.price}'
+                f'</s>'
+                f'</span> '
+                f'{self.item.get_reduced_price()}'
+            )
+
         if item.current_discount > 15:
             self.ui.item_current_discount_label.setStyleSheet(
                 'QLabel { background-color: #2E8B57; }',
+            )
+
+        if item.stock_quantity == 0:
+            self.ui.item_stock_quantity_label.setText(
+                '<span style="color: blue;">'
+                f'Количество на складе: {self.item.stock_quantity}'
+                '</span>'
             )
