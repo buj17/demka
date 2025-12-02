@@ -31,11 +31,6 @@
                                     <property name="text">
                                         <string>Фамилия Имя Отчество</string>
                                     </property>
-                                    <property name="alignment">
-                                        <set>
-                                            Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing
-                                        </set>
-                                    </property>
                                 </widget>
                             </item>
                         </layout>
@@ -63,6 +58,45 @@
                                                     <verstretch>0</verstretch>
                                                 </sizepolicy>
                                             </property>
+                                        </widget>
+                                    </item>
+                                </layout>
+                            </item>
+                            <item>
+                                <layout class="QHBoxLayout"
+                                        name="horizontalLayout_8">
+                                    <item>
+                                        <widget class="QLabel" name="label_3">
+                                            <property name="text">
+                                                <string>Сортировка по
+                                                    количеству на складе:
+                                                </string>
+                                            </property>
+                                        </widget>
+                                    </item>
+                                    <item>
+                                        <widget class="QComboBox"
+                                                name="sort_by_stock_quantity_combo_box">
+                                            <property name="sizePolicy">
+                                                <sizepolicy
+                                                        hsizetype="Expanding"
+                                                        vsizetype="Fixed">
+                                                    <horstretch>0</horstretch>
+                                                    <verstretch>0</verstretch>
+                                                </sizepolicy>
+                                            </property>
+                                            <item>
+                                                <property name="text">
+                                                    <string>По возрастанию
+                                                    </string>
+                                                </property>
+                                            </item>
+                                            <item>
+                                                <property name="text">
+                                                    <string>По убыванию
+                                                    </string>
+                                                </property>
+                                            </item>
                                         </widget>
                                     </item>
                                 </layout>
@@ -100,7 +134,7 @@
                                         <x>0</x>
                                         <y>0</y>
                                         <width>784</width>
-                                        <height>587</height>
+                                        <height>556</height>
                                     </rect>
                                 </property>
                                 <layout class="QVBoxLayout"
