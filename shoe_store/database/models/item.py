@@ -1,3 +1,4 @@
+from decimal import Decimal
 import os
 import pathlib
 
@@ -9,8 +10,8 @@ import config.settings
 from database.models.base import Base
 
 _DEFAULT_IMAGE_FILENAME = 'picture.png'
-_IMAGE_WIDTH = 200
-_IMAGE_HEIGHT = 150
+DEFAULT_IMAGE_WIDTH = 200
+DEFAULT_IMAGE_HEIGHT = 150
 
 
 class Item(Base):
@@ -104,27 +105,33 @@ class Item(Base):
 
         return value
 
-    def get_image(self, width: int, height: int) -> QPixmap:
+    def get_image(
+        self,
+        width: int = DEFAULT_IMAGE_WIDTH,
+        height: int = DEFAULT_IMAGE_HEIGHT,
+    ) -> QPixmap:
         image = QPixmap(
             config.settings.BASE_DIR / 'media' / self.image_filename,
         )
 
         return image.scaled(
-            _IMAGE_WIDTH,
-            _IMAGE_HEIGHT,
+            width,
+            height,
             Qt.AspectRatioMode.IgnoreAspectRatio,
             Qt.TransformationMode.SmoothTransformation,
         )
 
     def set_image(self, image_path: str | pathlib.Path):
-        previous_file = self.image_filename
+        image = QPixmap(image_path)
+        self.set_image_from_pixmap(image)
 
+    def set_image_from_pixmap(self, image: QPixmap):
+        previous_file = self.image_filename
         self.image_filename = f'{self.id}.jpg'
 
-        image = QPixmap(image_path)
         scaled_image = image.scaled(
-            _IMAGE_WIDTH,
-            _IMAGE_HEIGHT,
+            DEFAULT_IMAGE_WIDTH,
+            DEFAULT_IMAGE_HEIGHT,
             Qt.AspectRatioMode.IgnoreAspectRatio,
             Qt.TransformationMode.SmoothTransformation,
         )
@@ -143,3 +150,6 @@ class Item(Base):
             self.price - self.current_discount * self.price / 100,
             2,
         )
+
+    def set_price(self, value: float | int):
+        self.price = Decimal(str(round(value, 2)))
