@@ -1,8 +1,10 @@
 from PySide6.QtWidgets import QMainWindow
 
+import database
+from database.models import Item
 import gui.ui.main_window_ui
 from gui.widgets import LoginWidget
-from gui.widgets.item_list_manager_widget import ItemListManagerWidget
+from gui.windows.item_add_form_window import ItemAddFormWindow
 
 
 class MainWindow(QMainWindow):
@@ -15,7 +17,12 @@ class MainWindow(QMainWindow):
         self.login_widget = LoginWidget(self)
         self.login_widget.setVisible(False)
 
-        self.item_list_client_widget = ItemListManagerWidget(self)
+        session = database.create_session()
+        self.item_list_client_widget = ItemAddFormWindow(
+            self,
+            item=session.get(Item, 1),
+        )
+        session.close()
 
         self.ui.stackedWidget.addWidget(self.item_list_client_widget)
 

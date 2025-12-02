@@ -41,12 +41,12 @@ class ItemListManagerWidget(QWidget):
         self.ui.search_suppliers_combo_box.clear()
         self.ui.search_suppliers_combo_box.addItem(_ALL_SUPPLIERS)
 
+        statement = sqlalchemy.select(
+            sqlalchemy.distinct(
+                Item.supplier,
+            ),
+        )
         with database.create_session() as session:
-            statement = sqlalchemy.select(
-                sqlalchemy.distinct(
-                    Item.supplier,
-                ),
-            )
             result = session.execute(statement).fetchall()
 
         for supplier in map(lambda row: row[0], result):

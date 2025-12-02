@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>Form</class>
+    <widget class="QWidget" name="Form">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>400</width>
+                <height>700</height>
+            </rect>
+        </property>
+        <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+            </sizepolicy>
+        </property>
+        <property name="windowTitle">
+            <string>Form</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+                <layout class="QVBoxLayout" name="verticalLayout">
+                    <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout">
+                            <item>
+                                <widget class="QLabel" name="label">
+                                    <property name="sizePolicy">
+                                        <sizepolicy hsizetype="Maximum"
+                                                    vsizetype="Preferred">
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="text">
+                                        <string>Изображение</string>
+                                    </property>
+                                    <property name="alignment">
+                                        <set>Qt::AlignCenter</set>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QLabel" name="item_image_label">
+                                    <property name="text">
+                                        <string/>
+                                    </property>
+                                    <property name="pixmap">
+                                        <pixmap>../../../media/picture.png
+                                        </pixmap>
+                                    </property>
+                                    <property name="alignment">
+                                        <set>Qt::AlignCenter</set>
+                                    </property>
+                                </widget>
+                            </item>
+                        </layout>
+                    </item>
+                    <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_12">
+                            <item>
+                                <widget class="QPushButton"
+                                        name="item_upload_photo_button">
+                                    <property name="text">
+                                        <string>Загрузить изображение</string>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <spacer name="horizontalSpacer">
+                                    <property name="orientation">
+                                        <enum>Qt::Horizontal</enum>
+                                    </property>
+                                    <property name="sizeHint" stdset="0">
+                                        <size>
+                                            <width>40</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </item>
+                        </layout>
+                    </item>
+                    <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_3">
+                            <item>
+                                <widget class="QLabel" name="label_2">
+                                    <property name="text">
+                                        <string>Наименование товара</string>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QLineEdit"
+                                        name="item_name_line_edit">
+                                    <property name="sizePolicy">
+                                        <sizepolicy hsizetype="Expanding"
+                                                    vsizetype="Fixed">
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                            </item>
+                        </layout>
+                    </item>
+                    <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_4">
+                            <item>
+                                <widget class="QLabel" name="label_3">
+                                    <property name="text">
+                                        <string>Категория товара</string>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QComboBox"
+                                        name="item_category_combo_box">
+                                    <property name="sizePolicy">
+                                        <sizepolicy hsizetype="Expanding"
+                                                    vsizetype="Fixed">
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                            </item>
+                        </layout>
+                    </item>
+                    <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_5">
+                            <item>
+                                <widget class="QLabel" name="label_4">
+                                    <property name="text">
+                                        <string>Описание товара</string>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QPlainTextEdit"
+                                        name="item_description_plain_text_edit">
+                                    <property name="sizePolicy">
+                                        <sizepolicy hsizetype="Expanding"
+                                                    vsizetype="Preferred">
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="plainText">
+                                        <string/>
+                                    </property>
+                                </widget>
+                            </item>
+                        </layout>
+                    </item>
+                    <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_6">
+                            <item>
+                                <widget class="QLabel" name="label_5">
+                                    <property name="text">
+                                        <string>Производитель</string>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QComboBox"
+                                        name="item_producer_combo_box">
+                                    <property name="sizePolicy">
+                                        <sizepolicy hsizetype="Expanding"
+                                                    vsizetype="Fixed">
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                            </item>
+                        </layout>
+                    </item>
+                    <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_7">
+                            <item>
+                                <widget class="QLabel" name="label_6">
+                                    <property name="text">
+                                        <string>Поставщик</string>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QLineEdit"
+                                        name="item_supplier_line_edit"/>
+                            </item>
+                        </layout>
+                    </item>
+                    <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_8">
+                            <item>
+                                <widget class="QLabel" name="label_7">
+                                    <property name="text">
+                                        <string>Цена</string>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QDoubleSpinBox"
+                                        name="item_price_double_spin_box">
+                                    <property name="sizePolicy">
+                                        <sizepolicy hsizetype="Expanding"
+                                                    vsizetype="Fixed">
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="maximum">
+                                        <double>100000000.000000000000000
+                                        </double>
+                                    </property>
+                                    <property name="value">
+                                        <double>0.000000000000000</double>
+                                    </property>
+                                </widget>
+                            </item>
+                        </layout>
+                    </item>
+                    <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_9">
+                            <item>
+                                <widget class="QLabel" name="label_8">
+                                    <property name="text">
+                                        <string>Единица измерения</string>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QLineEdit"
+                                        name="item_measure_line_edit"/>
+                            </item>
+                        </layout>
+                    </item>
+                    <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_10">
+                            <item>
+                                <widget class="QLabel" name="label_9">
+                                    <property name="text">
+                                        <string>Количество на складе</string>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QSpinBox"
+                                        name="item_stock_quantity_spin_box">
+                                    <property name="sizePolicy">
+                                        <sizepolicy hsizetype="Expanding"
+                                                    vsizetype="Fixed">
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="maximum">
+                                        <number>100000000</number>
+                                    </property>
+                                </widget>
+                            </item>
+                        </layout>
+                    </item>
+                    <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_11">
+                            <item>
+                                <widget class="QLabel" name="label_10">
+                                    <property name="text">
+                                        <string>Действующая скидка</string>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QSpinBox"
+                                        name="item_current_discount_spin_box">
+                                    <property name="sizePolicy">
+                                        <sizepolicy hsizetype="Expanding"
+                                                    vsizetype="Fixed">
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="maximum">
+                                        <number>100</number>
+                                    </property>
+                                </widget>
+                            </item>
+                        </layout>
+                    </item>
+                    <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_13">
+                            <item>
+                                <widget class="QPushButton"
+                                        name="submit_button">
+                                    <property name="text">
+                                        <string>Сохранить</string>
+                                    </property>
+                                </widget>
+                            </item>
+                        </layout>
+                    </item>
+                </layout>
+            </item>
+        </layout>
+    </widget>
+    <resources/>
+    <connections/>
+</ui>
