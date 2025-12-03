@@ -54,6 +54,7 @@ class ItemListManagerWidget(QWidget):
 
     def refresh_items(self):
         self.items.clear()
+        self.item_cards.clear()
         clear_layout(self.ui.item_cards_layout)
 
         search_text = self.ui.search_items_line_edit.text()
