@@ -118,7 +118,7 @@
           <x>0</x>
           <y>0</y>
           <width>784</width>
-          <height>512</height>
+          <height>519</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -130,16 +130,24 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="go_to_orders_button">
-       <property name="text">
-        <string>Перейти к заказам</string>
-       </property>
-      </widget>
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QPushButton" name="go_to_orders_button">
+         <property name="text">
+          <string>Перейти к заказам</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="add_item_button">
+         <property name="text">
+          <string>Добавить товар</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
-   </item>
-   <item row="1" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout_5"/>
    </item>
   </layout>
  </widget>

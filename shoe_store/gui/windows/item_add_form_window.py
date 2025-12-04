@@ -1,6 +1,6 @@
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QPixmap
-from PySide6.QtWidgets import QFileDialog, QMessageBox, QWidget
+from PySide6.QtWidgets import QDialog, QFileDialog, QMessageBox
 import sqlalchemy
 
 import config.settings
@@ -11,13 +11,15 @@ import gui.ui.item_add_form_window_ui
 import gui.windows.main_window
 
 
-class ItemAddFormWindow(QWidget):
+class ItemAddFormWindow(QDialog):
     def __init__(self, *args, item: Item | None = None, **kwargs):
         super().__init__(*args, **kwargs)
         self.ui = gui.ui.item_add_form_window_ui.Ui_Form()
         self.ui.setupUi(self)
         self.parent_widget: gui.windows.main_window.MainWindow
         self.parent_widget = self.parentWidget()
+
+        self.setWindowTitle('Добавить товар')
 
         self.load_categories()
         self.load_producers()
@@ -147,10 +149,9 @@ class ItemAddFormWindow(QWidget):
             item.current_discount = (
                 self.ui.item_current_discount_spin_box.value()
             )
+            if self.current_item_image:
+                item.set_image_from_pixmap(self.current_item_image)
             session.commit()
-
-        if self.current_item_image:
-            item.set_image_from_pixmap(self.current_item_image)
 
         QMessageBox.information(
             self,

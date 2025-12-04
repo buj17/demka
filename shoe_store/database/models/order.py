@@ -51,3 +51,14 @@ class Order(Base):
         'OrderedItem',
         back_populates='order',
     )
+
+    def get_order_article(self):
+        res = []
+        for ordered_item in self.ordered_items:
+            res.extend(
+                (
+                    ordered_item.item.article_number,
+                    ordered_item.item_count,
+                ),
+            )
+        return ', '.join(map(str, res))

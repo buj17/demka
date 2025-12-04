@@ -10,9 +10,10 @@
 
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect,
                             )
-from PySide6.QtWidgets import (QGridLayout, QMenuBar,
-                               QStackedWidget, QStatusBar,
-                               QWidget, )
+from PySide6.QtGui import (QPixmap, )
+from PySide6.QtWidgets import (QGridLayout, QHBoxLayout, QLabel,
+                               QMenuBar, QSizePolicy, QSpacerItem,
+                               QStackedWidget, QStatusBar, QWidget, )
 
 
 class Ui_MainWindow(object):
@@ -35,7 +36,34 @@ class Ui_MainWindow(object):
         self.page_2.setObjectName(u"page_2")
         self.stackedWidget.addWidget(self.page_2)
 
-        self.gridLayout.addWidget(self.stackedWidget, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.stackedWidget, 1, 0, 1, 1)
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalSpacer_2 = QSpacerItem(40, 20,
+                                              QSizePolicy.Policy.Expanding,
+                                              QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_2)
+
+        self.logo_label = QLabel(self.centralwidget)
+        self.logo_label.setObjectName(u"logo_label")
+        self.logo_label.setPixmap(QPixmap(u"C:/Users/static/logo.png"))
+
+        self.horizontalLayout.addWidget(self.logo_label)
+
+        self.label = QLabel(self.centralwidget)
+        self.label.setObjectName(u"label")
+
+        self.horizontalLayout.addWidget(self.label)
+
+        self.horizontalSpacer = QSpacerItem(40, 20,
+                                            QSizePolicy.Policy.Expanding,
+                                            QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer)
+
+        self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 1)
 
         self.gridLayout_2.addLayout(self.gridLayout, 0, 0, 1, 1)
 
@@ -57,4 +85,8 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(
             QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.logo_label.setText("")
+        self.label.setText(QCoreApplication.translate("MainWindow",
+                                                      u"\u041c\u0430\u0433\u0430\u0437\u0438\u043d \"\u041e\u0431\u0443\u0432\u044c\"",
+                                                      None))
     # retranslateUi
