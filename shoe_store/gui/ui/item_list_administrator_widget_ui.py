@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'item_list_manager_widget.ui'
+## Form generated from reading UI file 'item_list_administrator_widget.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.9.0
 ##
@@ -107,7 +107,7 @@ class Ui_Form(object):
         self.scrollAreaWidgetContents_2.setObjectName(
             u"scrollAreaWidgetContents_2")
         self.scrollAreaWidgetContents_2.setEnabled(True)
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 784, 512))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 784, 519))
         self.verticalLayout_4 = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.item_cards_layout = QVBoxLayout()
@@ -119,17 +119,21 @@ class Ui_Form(object):
 
         self.verticalLayout.addWidget(self.items_scroll_area)
 
+        self.horizontalLayout_4 = QHBoxLayout()
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.go_to_orders_button = QPushButton(Form)
         self.go_to_orders_button.setObjectName(u"go_to_orders_button")
 
-        self.verticalLayout.addWidget(self.go_to_orders_button)
+        self.horizontalLayout_4.addWidget(self.go_to_orders_button)
+
+        self.add_item_button = QPushButton(Form)
+        self.add_item_button.setObjectName(u"add_item_button")
+
+        self.horizontalLayout_4.addWidget(self.add_item_button)
+
+        self.verticalLayout.addLayout(self.horizontalLayout_4)
 
         self.gridLayout_2.addLayout(self.verticalLayout, 0, 0, 1, 1)
-
-        self.horizontalLayout_5 = QHBoxLayout()
-        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-
-        self.gridLayout_2.addLayout(self.horizontalLayout_5, 1, 0, 1, 1)
 
         self.retranslateUi(Form)
 
@@ -168,4 +172,7 @@ class Ui_Form(object):
         self.go_to_orders_button.setText(QCoreApplication.translate("Form",
                                                                     u"\u041f\u0435\u0440\u0435\u0439\u0442\u0438 \u043a \u0437\u0430\u043a\u0430\u0437\u0430\u043c",
                                                                     None))
+        self.add_item_button.setText(QCoreApplication.translate("Form",
+                                                                u"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0442\u043e\u0432\u0430\u0440",
+                                                                None))
     # retranslateUi

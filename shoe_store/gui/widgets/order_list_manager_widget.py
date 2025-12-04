@@ -4,7 +4,7 @@ from sqlalchemy.orm import Query
 
 import database
 from database.models import Order, OrderedItem
-import gui.ui.order_list_widget_ui
+import gui.ui.order_list_manager_widget_ui
 from gui.widgets.order_card_widget import OrderCardWidget
 import gui.windows.main_window
 

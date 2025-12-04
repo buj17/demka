@@ -1,3 +1,4 @@
+from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QLayout, QMessageBox, QWidget
 import sqlalchemy
 from sqlalchemy.orm import Query
@@ -5,8 +6,9 @@ from sqlalchemy.orm import Query
 import database
 from database.models import Item
 from gui.current_user import CurrentUser
-import gui.ui.item_list_manager_widget_ui
+import gui.ui.item_list_administrator_widget_ui
 from gui.widgets.item_card_widget import ItemCardWidget
+from gui.windows.item_add_form_window import ItemAddFormWindow
 import gui.windows.main_window
 
 _ALL_SUPPLIERS = 'Все поставщики'
@@ -14,10 +16,10 @@ _ORDER_ASC = 'По возрастанию'
 _ORDER_DESC = 'По убыванию'
 
 
-class ItemListManagerWidget(QWidget):
+class ItemListAdministratorWidget(QWidget):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.ui = gui.ui.item_list_manager_widget_ui.Ui_Form()
+        self.ui = gui.ui.item_list_administrator_widget_ui.Ui_Form()
         self.ui.setupUi(self)
         self.parent_widget: gui.windows.main_window.MainWindow
         self.parent_widget = self.parentWidget()
@@ -41,7 +43,7 @@ class ItemListManagerWidget(QWidget):
         self.set_full_name()
 
         self.ui.logout_button.clicked.connect(self.logout)
-        self.ui.go_to_orders_button.clicked.connect(self.go_to_orders)
+        self.ui.add_item_button.clicked.connect(self.open_add_item_form)
 
     def set_full_name(self):
         current_user = CurrentUser.get_current_user()
@@ -113,10 +115,19 @@ class ItemListManagerWidget(QWidget):
             self.items.extend(query.all())
 
         for item in self.items:
-            self.ui.item_cards_layout.addWidget(ItemCardWidget(item))
+            self.ui.item_cards_layout.addWidget(
+                ItemCardWidget(
+                    item,
+                    self,
+                ),
+            )
 
-    def go_to_orders(self):
-        pass
+    def open_add_item_form(self):
+        add_item_form = ItemAddFormWindow(self)
+        add_item_form.setWindowModality(Qt.WindowModality.ApplicationModal)
+        add_item_form.show()
+        add_item_form.exec()
+        self.refresh_items()
 
 
 def clear_layout(layout: QLayout):

@@ -139,11 +139,14 @@ class Item(Base):
             str(config.settings.BASE_DIR / 'media' / self.image_filename),
         )
 
-        if (previous_file != _DEFAULT_IMAGE_FILENAME
-            and previous_file != self.image_filename):
-            os.remove(
-                config.settings.BASE_DIR / 'media' / previous_file,
-            )
+        previous_file_path = config.settings.BASE_DIR / 'media' / previous_file
+        if (
+            previous_file is not None
+            and previous_file != _DEFAULT_IMAGE_FILENAME
+            and previous_file != self.image_filename
+            and previous_file_path.exists()
+        ):
+            os.remove(previous_file_path)
 
     def get_reduced_price(self):
         return round(

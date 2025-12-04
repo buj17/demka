@@ -1,7 +1,13 @@
-from PySide6.QtWidgets import QWidget
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QAction
+from PySide6.QtWidgets import QMenu, QMessageBox, QWidget
 
 import database.models
+from database.models import UserRoleEnum
+from gui.current_user import CurrentUser
 import gui.ui.item_card_widget_ui
+from gui.windows.item_add_form_window import ItemAddFormWindow
+import gui.windows.main_window
 
 
 class ItemCardWidget(QWidget):
@@ -15,6 +21,8 @@ class ItemCardWidget(QWidget):
         self.ui = gui.ui.item_card_widget_ui.Ui_Form()
         self.ui.setupUi(self)
         self.item = item
+        self.parent_widget: gui.widgets.ItemListAdministratorWidget
+        self.parent_widget = self.parentWidget()
 
         self.ui.item_image_label.setText(
             '',
@@ -65,7 +73,49 @@ class ItemCardWidget(QWidget):
 
         if item.stock_quantity == 0:
             self.ui.item_stock_quantity_label.setText(
-                '<span style="color: blue;">'
+                '<span style="color: cyan;">'
                 f'Количество на складе: {self.item.stock_quantity}'
                 '</span>',
             )
+
+    def mousePressEvent(self, event, /):
+        current_user = CurrentUser.get_current_user()
+        if (
+            current_user is None
+            or current_user.user_role != UserRoleEnum.ADMINISTRATOR
+        ):
+            return
+
+        if event.button() == Qt.MouseButton.LeftButton:
+            self.open_edit_item_form()
+        elif event.button() == Qt.MouseButton.RightButton:
+            menu = QMenu(self)
+            delete_action = QAction('Удалить', self)
+            delete_action.triggered.connect(self.delete_item)
+            menu.addAction(delete_action)
+            menu.exec(event.globalPos())
+
+    def delete_item(self):
+        reply = QMessageBox.question(
+            self,
+            'Подтвердить удаление',
+            'Вы действительно хотите удалить данный товар?',
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+            QMessageBox.StandardButton.No,
+        )
+
+        if reply == QMessageBox.StandardButton.Yes:
+            with database.create_session() as session:
+                session.delete(self.item)
+                session.commit()
+            self.parent_widget.refresh_items()
+
+    def open_edit_item_form(self):
+        add_item_form = ItemAddFormWindow(
+            self,
+            item=self.item,
+        )
+        add_item_form.setWindowModality(Qt.WindowModality.ApplicationModal)
+        add_item_form.show()
+        add_item_form.exec()
+        self.parent_widget.refresh_items()

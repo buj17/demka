@@ -55,3 +55,6 @@ class User(Base):
         'Order',
         back_populates='user',
     )
+
+    def get_full_name(self) -> str:
+        return ' '.join((self.last_name, self.first_name, self.surname))
